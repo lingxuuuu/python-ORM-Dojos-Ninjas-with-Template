@@ -1,0 +1,55 @@
+Query: Create 3 new dojos
+dojo1 = Dojo.objects.create(name='dojo_seattle', city='Seattle', state='WA')
+dojo2 = Dojo.objects.create(name='dojo_boston', city='Boston', state='MA')
+dojo3 = Dojo.objects.create(name='dojo_los_angeles', city='los_angeles', state='CA')
+<QuerySet [<Dojo: Dojo object (4)>, <Dojo: Dojo object (5)>, <Dojo: Dojo object (6)>]>
+
+Query: Delete the 3 dojos you just created
+Dojo.objects.all().delete()
+
+Query: Create 3 more dojos
+dojo1 = Dojo.objects.create(name='dojo_seattle', city='Seattle', state='WA')
+dojo2 = Dojo.objects.create(name='dojo_boston', city='Boston', state='MA')
+dojo3 = Dojo.objects.create(name='dojo_los_angeles', city='los_angeles', state='CA')
+<QuerySet [<Dojo: Dojo object (4)>, <Dojo: Dojo object (5)>, <Dojo: Dojo object (6)>]>
+
+Query: Create 3 ninjas that belong to the first dojo
+ninja1 = Ninja.objects.create(first_name = 'A', last_name = 'B', dojo = Dojo.objects.get(id=4))
+ninja2 = Ninja.objects.create(first_name = 'C', last_name = 'D', dojo = Dojo.objects.get(id=4))
+ninja3 = Ninja.objects.create(first_name = 'E', last_name = 'F', dojo = Dojo.objects.get(id=4))
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+
+Query: Create 3 ninjas that belong to the second dojo
+ninja4 = Ninja.objects.create(first_name = 'G', last_name = 'H', dojo = Dojo.objects.get(id=5))
+ninja5 = Ninja.objects.create(first_name = 'I', last_name = 'J', dojo = Dojo.objects.get(id=5))
+ninja6 = Ninja.objects.create(first_name = 'K', last_name = 'L', dojo = Dojo.objects.get(id=5))
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>, 
+<Ninja: Ninja object (4)>, <Ninja: Ninja object (5)>, <Ninja: Ninja object (6)
+
+Query: Create 3 ninjas that belong to the third dojo
+ninja7 = Ninja.objects.create(first_name = 'M', last_name = 'N', dojo = Dojo.objects.get(id=6))
+ninja8 = Ninja.objects.create(first_name = 'O', last_name = 'P', dojo = Dojo.objects.get(id=6))
+ninja9 = Ninja.objects.create(first_name = 'Q', last_name = 'R', dojo = Dojo.objects.get(id=6))
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>, 
+<Ninja: Ninja object (4)>, <Ninja: Ninja object (5)>, <Ninja: Ninja object (6)>, 
+<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>
+
+Query: Retrieve all the ninjas from the first dojo
+>>> Ninja.objects.filter(dojo=Dojo.objects.get(id=4)) // Ninja.objects.filter(dojo = Dojo.objects.first()) 
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+>>> 
+
+Query: Retrieve all the ninjas from the last dojo
+>>> Ninja.objects.filter(dojo = Dojo.objects.last()) 
+<QuerySet [<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>
+>>> 
+
+Query: Retrieve the last ninja's dojo
+>>> Ninja.objects.last().dojo
+<Dojo: Dojo object (6)>
+>>> 
+
+Query: Create a new dojo
+Dojo.objects.create(name = 'dojo_austin', city='Austin', state='TX', desc= 'dojo located in Austin')
+>>> Dojo.objects.create(name = 'dojo_austin', city='Austin', state='TX', desc= 'dojo located in Austin')
+<Dojo: Dojo object (7)>
